@@ -6,7 +6,15 @@ use std::path::{Path, PathBuf};
 // These are only checked for files we encountered recursively. If the user deliberately added
 // these files as arguments, they'd still be included in the output.
 
-const DIR_IGNORE_LIST: &[&str] = &[".git", "node_modules", "venv", ".venv", "target"];
+const DIR_IGNORE_LIST: &[&str] = &[
+    ".git",
+    "node_modules",
+    "venv",
+    ".venv",
+    "target",
+    ".vscode",
+    "build",
+];
 const FILE_IGNORE_LIST: &[&str] = &[".gitignore", "pyproject.toml", "Cargo.lock", "Cargo.toml"];
 
 fn extract_fnames_from_dir_recursively(dir: &Path, names_arr: &mut Vec<PathBuf>) -> io::Result<()> {
