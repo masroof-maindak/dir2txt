@@ -24,4 +24,6 @@ d2t $(fzf) | wl-copy
 ## Future Work
 
 - [ ] Ignore dot-directories; probably only need to canonicalize paths
+- [ ] Ignore empty files by default. Let them pass via `--accept-empty`
+- [ ] Add `--ignore`/`-i` flag
 - [ ] Respect .ignore files
