@@ -15,7 +15,14 @@ const DIR_IGNORE_LIST: &[&str] = &[
     ".vscode",
     "build",
 ];
-const FILE_IGNORE_LIST: &[&str] = &[".gitignore", "pyproject.toml", "Cargo.lock", "Cargo.toml"];
+const FILE_IGNORE_LIST: &[&str] = &[
+    ".gitignore",
+    "pyproject.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "go.mod",
+    "go.sum",
+];
 
 fn extract_fnames_from_dir_recursively(dir: &Path, names_arr: &mut Vec<PathBuf>) -> io::Result<()> {
     for component in dir.iter() {
