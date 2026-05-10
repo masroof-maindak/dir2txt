@@ -77,7 +77,7 @@ fn main() -> io::Result<()> {
 
     for path in paths {
         let src = std::fs::read_to_string(&path)?;
-        std::println!("|-- {} --| \n\n```\n{}```\n", path.display(), src);
+        std::println!("|-- {} --|\n\n```\n{}\n```\n", path.display(), src);
     }
 
     Ok(())
