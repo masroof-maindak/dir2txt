@@ -23,7 +23,7 @@ d2t -- $(fzf) | wl-copy
 
 ## Future Work
 
-- [x] Add `--name-only` flag
+- [x] Add `--names-only` flag
 - [x] Incorporate `camino` & `anyhow` for better QoL
 - [x] FIXME: verify that paths being printed even exist
 - [ ] FIXME: a file can appear in the output list multiple times
