@@ -12,18 +12,23 @@ unless passed deliberately.
 
 ```bash
 # Fuzzy-find and pick files interactively
-d2t $(fzf)
+d2t -- $(fzf)
 
 # Auto-copy output
-d2t <files...> | wl-copy
+d2t -- <files...> | wl-copy
 
 # Auto-copy output of interactively selected files
-d2t $(fzf) | wl-copy
+d2t -- $(fzf) | wl-copy
 ```
 
 ## Future Work
 
-- [ ] Ignore dot-directories; probably only need to canonicalize paths
+- [x] Add `--name-only` flag
+- [x] Incorporate `camino` & `anyhow` for better QoL
+- [x] FIXME: verify that paths being printed even exist
+- [ ] FIXME: a file can appear in the output list multiple times
+- [ ] FIXME: allow ignored dirs and files into the output list if passed
+      deliberately
 - [ ] Ignore empty files by default. Let them pass via `--accept-empty`
 - [ ] Add `--ignore`/`-i` flag
 - [ ] Respect .ignore files
