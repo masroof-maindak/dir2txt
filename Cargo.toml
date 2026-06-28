@@ -1,6 +1,6 @@
 [package]
 name = "dir2txt"
-version = "0.2.1"
+version = "0.2.2"
 repository = "https://github.com/masroof-maindak/dir2txt"
 edition = "2024"
 readme = "README.md"

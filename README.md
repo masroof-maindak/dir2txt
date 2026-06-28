@@ -26,9 +26,11 @@ d2t -- $(fzf) | wl-copy
 - [x] Add `--names-only` flag
 - [x] Incorporate `camino` & `anyhow` for better QoL
 - [x] FIXME: verify that paths being printed even exist
-- [ ] FIXME: a file can appear in the output list multiple times
+- [x] FIXME: a file can appear in the output list multiple times
+- [x] Ignore empty files by default. Let them pass via `--accept-empty`
+- [x] Let hidden files pass via `--accept-hidden`
 - [ ] FIXME: allow ignored dirs and files into the output list if passed
       deliberately
-- [ ] Ignore empty files by default. Let them pass via `--accept-empty`
-- [ ] Add `--ignore`/`-i` flag
+- [ ] Add `--ignore`/`-i` flag to remove a given file from the output
 - [ ] Respect .ignore files
+  - See: <https://docs.rs/ignore/latest/ignore/>
