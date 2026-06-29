@@ -53,9 +53,10 @@ Options:
 - [x] Let hidden files pass via `--accept-hidden`
 - Rework built-in ignoring
   - [x] Ensure explicitly specified _files_ do NOT get ignored
-  - [ ] Add `--ignore`/`-i` flag to remove a given file from the output
-  - [ ] Add `--no-ignore`/`-u` flag to ALLOW an ignored directory/file that's in
-        the 'ignore-list'
+  - [x] Add `--ignore-list`/`-I` flag to remove given files from the output
+        (overriden by above though)
+  - [ ] ~~Add `--no-ignore`/`-u` flag to ALLOW an ignored directory/file that's
+        in the 'ignore-list'~~
   - See <https://iepathos.github.io/ripgrep/automatic-filtering/#overview> for
     more info
 - [ ] Respect .ignore files

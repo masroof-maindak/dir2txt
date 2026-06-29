@@ -22,6 +22,9 @@ struct Config {
 
     #[arg(short='H', long, action=ArgAction::SetTrue, help = "Accept hidden files (disabled by default)")]
     accept_hidden: bool,
+
+    #[arg(short='I', long, num_args = 0.., help = "List of file names to ignore")]
+    ignore_list: Vec<String>,
 }
 
 // These are only checked for files we encountered recursively. If the user deliberately added
@@ -53,9 +56,13 @@ fn insert_if_unseen_path(
     explicitly_specified: bool,
     // _resolve_symlinks: bool, // TODO
 ) -> Result<()> {
-    // Check ignore list & hidden-ness
+    // Check ignore list(s) & hidden-ness
     if let Some(fname) = path.file_name() {
         if FILE_IGNORE_LIST.contains(&fname) && !explicitly_specified {
+            return Ok(());
+        }
+
+        if cfg.ignore_list.contains(&fname.into()) && !explicitly_specified {
             return Ok(());
         }
 
