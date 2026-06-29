@@ -51,11 +51,11 @@ Options:
 - [x] FIXME: a file can appear in the output list multiple times
 - [x] Ignore empty files by default. Let them pass via `--accept-empty`
 - [x] Let hidden files pass via `--accept-hidden`
-- [ ] Rework built-in ignoring
+- Rework built-in ignoring
+  - [x] Ensure explicitly specified _files_ do NOT get ignored
   - [ ] Add `--ignore`/`-i` flag to remove a given file from the output
-  - [ ] Add `--no-ignore`/`u` flag to ALLOW an ignored directory/file that's in
+  - [ ] Add `--no-ignore`/`-u` flag to ALLOW an ignored directory/file that's in
         the 'ignore-list'
-  - Ensure explicitly specified files do NOT get ignored
   - See <https://iepathos.github.io/ripgrep/automatic-filtering/#overview> for
     more info
 - [ ] Respect .ignore files

@@ -50,11 +50,12 @@ fn insert_if_unseen_path(
     names_arr: &mut Vec<Utf8PathBuf>,
     hs: &mut HashSet<Utf8PathBuf>,
     cfg: &Config,
+    explicitly_specified: bool,
     // _resolve_symlinks: bool, // TODO
 ) -> Result<()> {
     // Check ignore list & hidden-ness
     if let Some(fname) = path.file_name() {
-        if FILE_IGNORE_LIST.contains(&fname) {
+        if FILE_IGNORE_LIST.contains(&fname) && !explicitly_specified {
             return Ok(());
         }
 
@@ -105,7 +106,7 @@ fn extract_fnames_from_dir_recursively(
         if path.is_dir() {
             extract_fnames_from_dir_recursively(&path, names_arr, hs, cfg)?;
         } else {
-            insert_if_unseen_path(path, names_arr, hs, cfg)?;
+            insert_if_unseen_path(path, names_arr, hs, cfg, false)?;
         }
     }
 
@@ -128,7 +129,7 @@ fn parse_args_to_fnames(cfg: &Config) -> Result<Vec<Utf8PathBuf>> {
         if path.is_dir() {
             extract_fnames_from_dir_recursively(path, &mut names_arr, &mut hs, cfg)?;
         } else if path.is_file() {
-            insert_if_unseen_path(path, &mut names_arr, &mut hs, cfg)?;
+            insert_if_unseen_path(path, &mut names_arr, &mut hs, cfg, true)?;
         } else {
             eprintln!("Path '{path}' is neither a directory nor a file.")
         }
@@ -139,10 +140,14 @@ fn parse_args_to_fnames(cfg: &Config) -> Result<Vec<Utf8PathBuf>> {
 
 fn main() -> Result<()> {
     let cfg = Config::parse();
+    if cfg.paths.is_empty() {
+        eprintln!("No paths provided. See the `-h` flag for help.");
+        return Ok(());
+    }
 
     let paths = parse_args_to_fnames(&cfg).with_context(|| "Failed to parse paths")?;
     if paths.is_empty() {
-        println!("No valid text files found.");
+        eprintln!("No valid text files found.");
         return Ok(());
     }
 
